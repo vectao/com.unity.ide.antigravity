@@ -125,21 +125,21 @@ namespace Microsoft.Unity.VisualStudio.Editor
 			{
 				var workspaces = new List<string>();
 				var userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-				string kiroStoragePath;
+				string antigravityStoragePath;
 
 #if UNITY_EDITOR_OSX
-				kiroStoragePath = Path.Combine(userProfile, "Library", "Application Support", "kiro", "User", "workspaceStorage");
+				antigravityStoragePath = Path.Combine(userProfile, "Library", "Application Support", "antigravity", "User", "workspaceStorage");
 #elif UNITY_EDITOR_LINUX
-				kiroStoragePath = Path.Combine(userProfile, ".config", "Kiro", "User", "workspaceStorage");
+				antigravityStoragePath = Path.Combine(userProfile, ".config", "Antigravity", "User", "workspaceStorage");
 #else
-				kiroStoragePath = Path.Combine(userProfile, "AppData", "Roaming", "kiro", "User", "workspaceStorage");
+				antigravityStoragePath = Path.Combine(userProfile, "AppData", "Roaming", "antigravity", "User", "workspaceStorage");
 #endif
-				
-				Debug.Log($"[Kiro] Looking for workspaces in: {kiroStoragePath}");
-				
-				if (Directory.Exists(kiroStoragePath))
+
+				Debug.Log($"[Antigravity] Looking for workspaces in: {antigravityStoragePath}");
+
+				if (Directory.Exists(antigravityStoragePath))
 				{
-					foreach (var workspaceDir in Directory.GetDirectories(kiroStoragePath))
+					foreach (var workspaceDir in Directory.GetDirectories(antigravityStoragePath))
 					{
 						try
 						{
@@ -191,21 +191,21 @@ namespace Microsoft.Unity.VisualStudio.Editor
 						}
 						catch (Exception ex)
 						{
-							Debug.LogWarning($"[Kiro] Error reading workspace state file: {ex.Message}");
+							Debug.LogWarning($"[Antigravity] Error reading workspace state file: {ex.Message}");
 							continue;
 						}
 					}
 				}
 				else
 				{
-					Debug.LogWarning($"[Kiro] Workspace storage directory not found: {kiroStoragePath}");
+					Debug.LogWarning($"[Antigravity] Workspace storage directory not found: {antigravityStoragePath}");
 				}
 
 				return workspaces.Distinct().ToArray();
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError($"[Kiro] Error getting workspace directory: {ex.Message}");
+				Debug.LogError($"[Antigravity] Error getting workspace directory: {ex.Message}");
 				return null;
 			}
 		}

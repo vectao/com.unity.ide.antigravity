@@ -1,5 +1,5 @@
 {
-    "name": "Unity.Kiro.Editor",
+    "name": "Unity.Antigravity.Editor",
     "references": [],
     "includePlatforms": [
         "Editor"
